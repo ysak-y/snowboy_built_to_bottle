@@ -1,11 +1,12 @@
+import sys
+sys.path.append('lib/')
 from flask import Flask, render_template
 import os
 import boto3
-from ask import alexa
 
 app = Flask(__name__)
 
-@app.route('/lightOn', method=['GET'])
+@app.route('/lightOn', methods=['GET'])
 def light_on_intent():
     client = boto3.client('sqs', region_name='us-east-1')
 
@@ -22,7 +23,7 @@ def light_on_intent():
 
     return nil
 
-@app.route('/lightOff', method=['GET'])
+@app.route('/lightOff', methods=['GET'])
 def light_off_intent():
     client = boto3.client('sqs', region_name='us-east-1')
 
