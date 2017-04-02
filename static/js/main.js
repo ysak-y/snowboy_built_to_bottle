@@ -11,18 +11,60 @@ recognition.interimResults = false;
 recognition.maxAlternatives = 1;
 recognition.continuous = true;
 
+function speak(message) {
+  var uttr = new SpeechSynthesisUtterance(message);
+  uttr.lang = 'ja-JP';
+  SpeechSynthesis.speak(uttr);
+}
+
+function lightOffIntent() {
+  $.ajax({
+    url: '/lightOff',
+    method: 'GET',
+  })
+  .done(function(response) {
+    speak('電気を消しました');
+  })
+  .error(function(response) {
+    speak('エラーが発生しました');
+  });
+}
+
+function lightOnIntent() {
+  $.ajax({
+    url: '/lightOn',
+    method: 'GET',
+  })
+  .done(function(response) {
+    speak('電気をつけました');
+  })
+  .error(function(response) {
+    speak('エラーが発生しました');
+  });
+}
+
+function handlingResult(serverResponse) {
+  var query = serverResponse.result.resolvedQuery;
+  var message = serverResponse.result.fulfillment.speech;
+  var action = serverResponse.result.action;
+
+  $("#user_input").text(query);
+  switch (action) {
+    case 'input.what':
+      whatIntent();
+      break;
+    default:
+      break;
+  }
+  speak(message);
+}
+
 recognition.onstart = function(event) {
   console.log('recognition start');
-  // var uttr = new SpeechSynthesisUtterance('聞くのを開始します');
-  // uttr.lang = 'ja-JP';
-  SpeechSynthesis.speak(uttr);
 }
 
 recognition.onend = function(event) {
   console.log('recognition end');
-  // var uttr = new SpeechSynthesisUtterance('聞くのをやめます');
-  // uttr.lang = 'ja-JP';
-  SpeechSynthesis.speak(uttr);
   if (isListening == false) {
     restart();
   }
@@ -30,9 +72,6 @@ recognition.onend = function(event) {
 
 recognition.onerror = function(event) {
   console.log('recognition end');
-  // var uttr = new SpeechSynthesisUtterance('エラーが発生しました');
-  // uttr.lang = 'ja-JP';
-  SpeechSynthesis.speak(uttr);
   if (isListening == false) {
     restart();
   }
