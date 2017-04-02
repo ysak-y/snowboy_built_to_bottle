@@ -23,10 +23,10 @@ function lightOffIntent() {
     method: 'GET',
   })
   .done(function(response) {
-    speak('電気を消しました');
+    console.log('light off');
   })
   .error(function(response) {
-    speak('エラーが発生しました');
+    console.log('error');
   });
 }
 
@@ -36,10 +36,10 @@ function lightOnIntent() {
     method: 'GET',
   })
   .done(function(response) {
-    speak('電気をつけました');
+    console.log('light on');
   })
   .error(function(response) {
-    speak('エラーが発生しました');
+    console.log('error');
   });
 }
 
@@ -50,8 +50,11 @@ function handlingResult(serverResponse) {
 
   $("#user_input").text(query);
   switch (action) {
-    case 'input.what':
-      whatIntent();
+    case 'input.lightOn':
+      lightOnIntent();
+      break;
+    case 'input.lightOff':
+      lightOffIntent();
       break;
     default:
       break;
