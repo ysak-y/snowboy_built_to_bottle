@@ -13,13 +13,15 @@ recognition.continuous = true;
 
 recognition.onstart = function(event) {
   console.log('recognition start');
-  var uttr = new SpeechSynthesisUtterance('聞くのを開始します');
+  // var uttr = new SpeechSynthesisUtterance('聞くのを開始します');
+  // uttr.lang = 'ja-JP';
   SpeechSynthesis.speak(uttr);
 }
 
 recognition.onend = function(event) {
   console.log('recognition end');
-  var uttr = new SpeechSynthesisUtterance('聞くのをやめます');
+  // var uttr = new SpeechSynthesisUtterance('聞くのをやめます');
+  // uttr.lang = 'ja-JP';
   SpeechSynthesis.speak(uttr);
   if (isListening == false) {
     restart();
@@ -28,7 +30,8 @@ recognition.onend = function(event) {
 
 recognition.onerror = function(event) {
   console.log('recognition end');
-  var uttr = new SpeechSynthesisUtterance('エラーが発生しました');
+  // var uttr = new SpeechSynthesisUtterance('エラーが発生しました');
+  // uttr.lang = 'ja-JP';
   SpeechSynthesis.speak(uttr);
   if (isListening == false) {
     restart();
@@ -38,12 +41,12 @@ recognition.onerror = function(event) {
 recognition.onresult = function(event) {
   console.log('recognition onresult');
   var len = event.results.length;
-  var verb = event.results[lem - 1][0].transcript;
+  var verb = event.results[len - 1][0].transcript;
 
   if (isListening == true) {
     var client = new ApiAi.ApiAiClient(
         {
-          accessToken: ,
+          accessToken: '71849301f140436595c609dac51467e0',
           lang: 'ja'
         }
     );
