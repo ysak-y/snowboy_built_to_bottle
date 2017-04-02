@@ -1,5 +1,3 @@
-import sys
-sys.path.append('lib/')
 from flask import Flask, render_template
 import os
 import boto3
