@@ -49,6 +49,7 @@ function handlingResult(serverResponse) {
   var action = serverResponse.result.action;
 
   $("#user_input").text(query);
+  $("#system_message").text(message);
   switch (action) {
     case 'input.lightOn':
       lightOnIntent();
