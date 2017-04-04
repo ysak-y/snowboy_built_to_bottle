@@ -49,10 +49,11 @@ function getRefrigePicture() {
     method: 'GET',
   })
   .done(function(response) {
-
+    var img = '<img src="' + response + '"/>';
+    $('#result').html(img);
   })
   .fail(function(response) {
-
+    console.log('error');
   });
 }
 
