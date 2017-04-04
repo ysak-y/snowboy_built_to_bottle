@@ -25,7 +25,7 @@ function lightOffIntent() {
   .done(function(response) {
     console.log('light off');
   })
-  .error(function(response) {
+  .fail(function(response) {
     console.log('error');
   });
 }
@@ -38,8 +38,21 @@ function lightOnIntent() {
   .done(function(response) {
     console.log('light on');
   })
-  .error(function(response) {
+  .fail(function(response) {
     console.log('error');
+  });
+}
+
+function getRefrigePicture() {
+  $.ajax({
+    url: '/get_refrige_picture',
+    method: 'GET',
+  })
+  .done(function(response) {
+
+  })
+  .fail(function(response) {
+
   });
 }
 
