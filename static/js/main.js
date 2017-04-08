@@ -47,6 +47,8 @@ function changeListeningState(state) {
       icon = '<i class="material-icons">sentiment_very_dissatisfied</i>';
       break;
   }
+  $('#listening-state').attr('class', color);
+  $('#listening-state').html(icon);
 }
 
 function lightOffIntent() {
@@ -114,10 +116,12 @@ function handlingResult(serverResponse) {
 
 recognition.onstart = function(event) {
   console.log('recognition start');
+  changeListeningState('standby')
 }
 
 recognition.onend = function(event) {
   console.log('recognition end');
+  changeListeningState('standby')
   if (isListening == false) {
     restart();
   }
@@ -125,6 +129,7 @@ recognition.onend = function(event) {
 
 recognition.onerror = function(event) {
   console.log('recognition end');
+  changeListeningState('error')
   if (isListening == false) {
     restart();
   }
@@ -146,6 +151,7 @@ recognition.onresult = function(event) {
     client.textRequest(verb).then(
       function(serverResponse) {
         console.log(serverResponse);
+        changeListeningState('handling');
         handlingResult(serverResponse);
         isListening = false;
         recognition.start();
@@ -162,6 +168,7 @@ recognition.onresult = function(event) {
     if (verb == 'バトラー') {
       isListening = true;
       console.log('start listening');
+      changeListeningState('listening')
     } else {
       console.log(verb)
     }
