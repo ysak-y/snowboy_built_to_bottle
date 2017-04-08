@@ -22,12 +22,40 @@ function update_dialog(message, query) {
   $('#user_input').text(query);
 }
 
+function changeListeningState(state) {
+  var color = '';
+  var icon = '';
+  switch (state) {
+    case 'standby':
+      color = 'blue-grey lighten-4';
+      icon = '<i class="material-icons">sentiment_neutral</i>';
+      break;
+    case 'listening':
+      color = 'blue lighten-4';
+      icon = '<i class="material-icons">sentiment_satisfied</i>';
+      break;
+    case 'handling':
+      color = 'green lighten-4';
+      icon = '<i class="material-icons">sentiment_satisfied</i>';
+      break;
+    case 'error':
+      color = 'red lighten-4';
+      icon = '<i class="material-icons">sentiment_very_dissatisfied</i>';
+      break;
+    default:
+      color = 'red lighten-4';
+      icon = '<i class="material-icons">sentiment_very_dissatisfied</i>';
+      break;
+  }
+}
+
 function lightOffIntent() {
   $.ajax({
     url: '/lightOff',
     method: 'GET',
   })
   .done(function(response) {
+    speak('電気を消しました');
     console.log('light off');
   })
   .fail(function(response) {
@@ -42,6 +70,7 @@ function lightOnIntent() {
   })
   .done(function(response) {
     console.log('light on');
+    speak('電気をつけました');
   })
   .fail(function(response) {
     console.log('error');

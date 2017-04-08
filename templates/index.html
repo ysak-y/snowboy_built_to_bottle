@@ -7,6 +7,8 @@
   <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
   <!-- Compiled and minified CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/css/materialize.min.css">
+  <!-- Google material icons -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <!-- Compiled and minified JavaScript -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/js/materialize.min.js"></script>
   <!-- React -->
@@ -19,14 +21,15 @@
 </head>
   <body class='grey lighten-4'>
     <div class="container">
+      <div id='listening_state'></div>
       <div id="result" class='row'></div>
       <ul class="collection">
         <li class="collection-item">
-          <span class='name_text blue-text lighten-2'>執事：</span>
+          <span class='name-text blue-text lighten-2'>執事：</span>
           <span id='system_message'></span>
         </li>
         <li class="collection-item">
-          <span class='name_text blue-text lighten-2'>あなた：</span>
+          <span class='name-text blue-text lighten-2'>あなた：</span>
           <span id='user_input'></span>
         </li>
       </ul>
