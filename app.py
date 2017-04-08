@@ -24,7 +24,7 @@ def light_on_intent():
                 }
             )
 
-    return nil
+    return False
 
 @app.route('/lightOff', methods=['GET'])
 def light_off_intent():
@@ -41,7 +41,7 @@ def light_off_intent():
                 }
             )
 
-    return nil
+    return False
 
 @app.route('/')
 def index():
