@@ -1,8 +1,13 @@
 from flask import Flask, render_template
 import os
 import boto3
+import json
 
 app = Flask(__name__)
+
+@app.route('/get_refrige_picture', method=['GET'])
+def get_refrige_picture():
+    return json.dumps('https://s3.amazonaws.com/yoshiaki-raspi-camera/picture.jpg')
 
 @app.route('/lightOn', methods=['GET'])
 def light_on_intent():
