@@ -5,7 +5,7 @@ import json
 
 app = Flask(__name__)
 
-@app.route('/get_refrige_picture', method=['GET'])
+@app.route('/get_refrige_picture', methods=['GET'])
 def get_refrige_picture():
     return json.dumps('https://s3.amazonaws.com/yoshiaki-raspi-camera/picture.jpg')
 
