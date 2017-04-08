@@ -1,7 +1,19 @@
+body{
+  font-family: Georgia, 'Hiragino Mincho ProN', 'Yu Muncho', serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Helverica Neue', 'Segoe UI', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', san-serif;
+}
+
 .name-text{
   font-weight: bold;
 }
 
 #result{
   min-height: 200px;
+  background: white;
+  margin-top: 5px;
+}
+
+#listening_state{
+  margin-top: 15px;
+  min-height: 50px;
 }
