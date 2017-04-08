@@ -15,10 +15,21 @@
   <script src="https://unpkg.com/react-dom@15/dist/react-dom.min.js"></script>
   <script src="/static/js/api-ai-javascript/target/ApiAi.streamless.js"></script>
   <script src="/static/js/main.js"></script>
+  <link rel="stylesheet" href="/static/css/main.css">
 </head>
-<body>
-  <div id="result"></div>
-  <div id="user_input"></div>
-  <div id="system_message"></div>
-</body>
+  <body class='grey lighten-4'>
+    <div class="container">
+      <div id="result" class='row'></div>
+      <ul class="collection">
+        <li class="collection-item">
+          <span class='name_text blue-text lighten-2'>執事：</span>
+          <span id='system_message'></span>
+        </li>
+        <li class="collection-item">
+          <span class='name_text blue-text lighten-2'>あなた：</span>
+          <span id='user_input'></span>
+        </li>
+      </ul>
+    </div>
+  </body>
 </html>

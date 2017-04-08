@@ -17,6 +17,11 @@ function speak(message) {
   SpeechSynthesis.speak(uttr);
 }
 
+function update_dialog(message, query) {
+  $('#system_message').text(message);
+  $('#user_input').text(query);
+}
+
 function lightOffIntent() {
   $.ajax({
     url: '/lightOff',
@@ -75,6 +80,7 @@ function handlingResult(serverResponse) {
       break;
   }
   speak(message);
+  update_dialog(message, query);
 }
 
 recognition.onstart = function(event) {
